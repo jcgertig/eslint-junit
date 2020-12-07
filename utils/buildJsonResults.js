@@ -41,12 +41,14 @@ module.exports = function buildJsonResults (report, appDirectory, options) {
 
     // Iterate through test cases
     suite.messages.forEach((tc) => {
+      const obj = Object.assign({}, suite, tc);
+
       const testCase = {
         'testcase': [
           {
             '_attr': {
-              'classname': buildTemplate(options.classNameTemplate, tc),
-              'name': buildTemplate(options.titleTemplate, tc),
+              'classname': buildTemplate(options.classNameTemplate, obj),
+              'name': buildTemplate(options.titleTemplate, obj),
               'time': 1
             }
           }
